@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
 
+	public float levelStartDelay = 2f;
 	public float turnDelay = .1f;
 	public static GameManager instance = null;
 	public BoardManager boardScript;
@@ -13,9 +15,12 @@ public class GameManager : MonoBehaviour
 	public bool
 		playersTurn = true;
 
-	private int level = 3;
+	private Text levelText;
+	private GameObject levelImage;
+	private int level = 1;
 	private List<Enemy> enemies;
 	private bool enemiesMoving;
+	private bool doingSetup;
 
 
 	// Use this for initialization
@@ -32,21 +37,43 @@ public class GameManager : MonoBehaviour
 		InitGame ();
 	}
 
+	private void OnLevelWasLoaded (int index)
+	{
+		this.level++;
+		this.InitGame ();
+	}
+
 	void InitGame ()
 	{
+		this.doingSetup = true;
+
+		this.levelImage = GameObject.Find ("LevelImage");
+		this.levelText = GameObject.Find ("LevelText").GetComponent<Text> ();
+		this.levelText.text = "Day " + this.level;
+		this.levelImage.SetActive (true);
+		this.Invoke ("HideLevelImage", this.levelStartDelay);
+
 		this.enemies.Clear ();
 		this.boardScript.SetupScene (level);
 	}
 
+	private void HideLevelImage ()
+	{
+		this.levelImage.SetActive (false);
+		this.doingSetup = false;
+	}
+
 	public void GameOver ()
 	{
+		this.levelText.text = "After " + this.level + " days, you starved.";
+		this.levelImage.SetActive (true);
 		this.enabled = false;
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-		if (this.playersTurn || this.enemiesMoving) {
+		if (this.playersTurn || this.enemiesMoving || this.doingSetup) {
 			return;
 		}
 
