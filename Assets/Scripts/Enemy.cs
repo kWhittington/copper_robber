@@ -10,6 +10,7 @@ public class Enemy : MovingObject
 
 	protected override void Start ()
 	{
+		GameManager.instance.AddEnemyToList (this);
 		this.animator = GetComponent<Animator> ();
 		this.target = GameObject.FindGameObjectWithTag ("Player").transform;
 		base.Start ();
@@ -44,6 +45,7 @@ public class Enemy : MovingObject
 	protected override void OnCantMove <T> (T component)
 	{
 		Player hitPlayer = component as Player;
+		this.animator.SetTrigger ("enemyAttack");
 		hitPlayer.LooseFood (this.playerDamage);
 	}
 }
