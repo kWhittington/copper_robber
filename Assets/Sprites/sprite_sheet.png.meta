@@ -1,15 +1,37 @@
 fileFormatVersion: 2
 guid: 31358e1b7c4d64f748fdce34abe0aefa
-timeCreated: 1447634945
+timeCreated: 1447641852
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: sprite_sheet_0
-    21300002: sprite_sheet_1
-    21300004: sprite_sheet_2
-    21300006: sprite_sheet_3
-    21300008: sprite_sheet_4
-    21300010: sprite_sheet_5
+    21300000: robber_idle_even
+    21300002: robber_idle_odd
+    21300004: robber_push_left
+    21300006: robber_push_down
+    21300008: robber_push_right
+    21300010: robber_push_up
+    21300012: chair
+    21300014: couch_chair
+    21300016: couch
+    21300018: sprite_sheet_9
+    21300020: large_table
+    21300022: sprite_sheet_11
+    21300024: small_table
+    21300026: wall
+    21300028: floor
+    21300030: exit_arrow_right
+    21300032: exit_arrow_up
+    21300034: exit_arrow_left
+    21300036: exit_arrow_down
+    21300038: copper
+    21300040: sprite_sheet_20
+    21300042: sprite_sheet_21
+    21300044: sprite_sheet_22
+    21300046: sprite_sheet_23
+    21300048: sprite_sheet_24
+    21300050: sprite_sheet_25
+    21300052: sprite_sheet_26
+    21300054: sprite_sheet_27
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -56,65 +78,185 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: sprite_sheet_0
+    - name: robber_idle_even
       rect:
         serializedVersion: 2
-        x: 7
-        y: 128
-        width: 18
-        height: 30
+        x: 0
+        y: 512
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: sprite_sheet_1
+    - name: robber_idle_odd
       rect:
         serializedVersion: 2
-        x: 39
-        y: 128
-        width: 18
-        height: 30
+        x: 32
+        y: 512
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: sprite_sheet_2
+    - name: robber_push_left
       rect:
         serializedVersion: 2
-        x: 5
+        x: 0
+        y: 480
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: robber_push_down
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 448
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: robber_push_right
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 416
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: robber_push_up
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: chair
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 352
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: couch_chair
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 320
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: couch
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 288
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: large_table
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: small_table
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: wall
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: floor
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: exit_arrow_right
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: exit_arrow_up
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 96
-        width: 19
-        height: 29
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: sprite_sheet_3
+    - name: exit_arrow_left
       rect:
         serializedVersion: 2
-        x: 7
+        x: 0
         y: 64
-        width: 18
-        height: 30
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: sprite_sheet_4
+    - name: exit_arrow_down
       rect:
         serializedVersion: 2
-        x: 8
+        x: 0
         y: 32
-        width: 19
-        height: 29
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: sprite_sheet_5
+    - name: copper
       rect:
         serializedVersion: 2
-        x: 7
+        x: 0
         y: 0
-        width: 18
-        height: 30
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
