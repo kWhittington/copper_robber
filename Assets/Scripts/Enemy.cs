@@ -10,7 +10,7 @@ public class Enemy : MovingObject
 	public AudioClip enemyAttack1;
 	public AudioClip enemyAttack2;
 
-	protected override void Start ()
+	protected override void Start()
 	{
 		GameManager.instance.AddEnemyToList (this);
 		this.animator = GetComponent<Animator> ();
@@ -18,8 +18,7 @@ public class Enemy : MovingObject
 		base.Start ();
 	}
 
-	protected override void AttemptMove<T> (int xDir, int yDir)
-	{
+	protected override void AttemptMove<T> (int xDir, int yDir) {
 		if (this.skipMove) {
 			this.skipMove = false;
 			return;
