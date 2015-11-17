@@ -29,7 +29,7 @@ public abstract class MovingObject : MonoBehaviour
 
     if (hit.transform == null)
     {
-      StartCoroutine(SmoothMovement(end));
+      rb2d.MovePosition(end);
 
       return true;
     }
@@ -53,21 +53,6 @@ public abstract class MovingObject : MonoBehaviour
     if (!canMove && hitComponent != null)
     {
       OnCantMove(hitComponent);
-    }
-  }
-
-  protected IEnumerator SmoothMovement(Vector3 end)
-  {
-    float sqrRemainingDistance = (transform.position - end).sqrMagnitude;
-
-    while (sqrRemainingDistance > float.Epsilon)
-    {
-      Vector3 newPosition = Vector3.MoveTowards(rb2d.position, end,
-                                                inverseMoveTime *
-                                                Time.deltaTime);
-      rb2d.MovePosition(newPosition);
-      sqrRemainingDistance = (transform.position - end).sqrMagnitude;
-      yield return null;
     }
   }
 
