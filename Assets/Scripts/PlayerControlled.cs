@@ -59,7 +59,7 @@ public class PlayerControlled : Movable
     }
   }
 
-  protected override void OnCantMove<T> (T component)
+  protected override void OnCollisionWith<T> (T component)
   {
     Debug.Log("Cannot Move Robber");
   }

@@ -47,7 +47,7 @@ public class Enemy : Movable
     this.AttemptMove<Player> (xDir, yDir);
   }
 
-  protected override void OnCantMove <T> (T component)
+  protected override void OnCollisionWith <T> (T component)
   {
     Player hitPlayer = component as Player;
 

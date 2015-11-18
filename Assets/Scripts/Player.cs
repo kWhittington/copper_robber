@@ -92,7 +92,7 @@ public class Player : Movable
     }
   }
 
-  protected override void OnCantMove<T> (T component)
+  protected override void OnCollisionWith<T> (T component)
   {
     Wall hitWall = component as Wall;
 

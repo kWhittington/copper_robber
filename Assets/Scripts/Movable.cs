@@ -86,9 +86,9 @@ public abstract class Movable : MonoBehaviour
 
     if (Collided && hitComponent != null)
     {
-      OnCantMove(hitComponent);
+      OnCollisionWith(hitComponent);
     }
   }
 
-  protected abstract void OnCantMove <T> (T component) where T : Component;
+  protected abstract void OnCollisionWith <T> (T component) where T : Component;
 }
