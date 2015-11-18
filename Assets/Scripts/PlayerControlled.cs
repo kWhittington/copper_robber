@@ -53,8 +53,8 @@ public class PlayerControlled : Movable
   protected override void AttemptMove<T> (int xDir, int yDir)
   {
     base.AttemptMove<T> (xDir, yDir);
-    RaycastHit2D hit;
-    if (Move(xDir, yDir))
+    Move(xDir, yDir);
+    if (!Collided)
     {
     }
   }

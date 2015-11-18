@@ -5,12 +5,18 @@ public abstract class Movable : MonoBehaviour
 {
   public LayerMask blockingLayer;
 
+  private bool collided;
   private RaycastHit2D projectedCollision;
   private Vector2 currentDirection;
 
   public BoxCollider2D BoxCollider
   {
     get { return GetComponent<BoxCollider2D>(); }
+  }
+
+  public bool Collided
+  {
+    get { return collided; }
   }
 
   public Vector2 CurrentDirection
@@ -39,18 +45,18 @@ public abstract class Movable : MonoBehaviour
 
   public bool ProjectedToCollide
   {
-    get { return ProjectedCollision.collider != null; }
+    get { return ProjectedCollision.transform != null; }
   }
 
   public void CalculateTrajectory()
   {
     BoxCollider.enabled = false;
-    projectedCollision = Physics2D.Linecast(CurrentPosition, ProjectedPosition,
-                                            blockingLayer);
+    projectedCollision = Physics2D.Linecast(
+      CurrentPosition, ProjectedPosition, blockingLayer);
     BoxCollider.enabled = true;
   }
 
-  protected bool Move(int xDirection, int yDirection)
+  protected void Move(int xDirection, int yDirection)
   {
     currentDirection = new Vector2(xDirection, yDirection);
     CalculateTrajectory();
@@ -58,26 +64,25 @@ public abstract class Movable : MonoBehaviour
     if (!ProjectedToCollide)
     {
       Rigidbody.MovePosition(ProjectedPosition);
-
-      return true;
+      collided = false;
+    } else {
+      collided = true;
     }
-
-    return false;
   }
 
   protected virtual void AttemptMove <T> (int xDir,
                                           int yDir) where T : Component
   {
-    bool canMove = Move(xDir, yDir);
+    Move(xDir, yDir);
 
-    if (!ProjectedToCollide)
+    if (!Collided)
     {
       return;
     }
 
     T hitComponent = ProjectedCollision.transform.GetComponent<T> ();
 
-    if (!canMove && hitComponent != null)
+    if (Collided && hitComponent != null)
     {
       OnCantMove(hitComponent);
     }
