@@ -5,11 +5,6 @@ using System;
 public class Gridable : MonoBehaviour {
   public float cell_size = 1f;
 
-  void Update()
-  {
-    SnapToGrid();
-  }
-
   public Vector3 GridPosition()
   {
     return new Vector3(GridX(), GridY(), GridZ());
@@ -33,5 +28,10 @@ public class Gridable : MonoBehaviour {
   public void SnapToGrid()
   {
     transform.position = GridPosition();
+  }
+
+  void Update()
+  {
+    SnapToGrid();
   }
 }
