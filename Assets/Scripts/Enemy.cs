@@ -3,51 +3,56 @@ using System.Collections;
 
 public class Enemy : MovingObject
 {
-	public int playerDamage;
-	private Animator animator;
-	private Transform target;
-	private bool skipMove;
-	public AudioClip enemyAttack1;
-	public AudioClip enemyAttack2;
+  public int playerDamage;
+  private Animator animator;
+  private Transform target;
+  private bool skipMove;
+  public AudioClip enemyAttack1;
+  public AudioClip enemyAttack2;
 
-	protected override void Start()
-	{
-		GameManager.instance.AddEnemyToList (this);
-		this.animator = GetComponent<Animator> ();
-		this.target = GameObject.FindGameObjectWithTag ("Player").transform;
-		base.Start ();
-	}
+  protected void Start()
+  {
+    GameManager.instance.AddEnemyToList(this);
+    this.animator = GetComponent<Animator> ();
+    this.target = GameObject.FindGameObjectWithTag("Player").transform;
+  }
 
-	protected override void AttemptMove<T> (int xDir, int yDir) {
-		if (this.skipMove) {
-			this.skipMove = false;
-			return;
-		}
+  protected override void AttemptMove<T> (int xDir, int yDir)
+  {
+    if (this.skipMove)
+    {
+      this.skipMove = false;
 
-		base.AttemptMove<T> (xDir, yDir);
+      return;
+    }
 
-		this.skipMove = true;
-	}
+    base.AttemptMove<T> (xDir, yDir);
 
-	public void MoveEnemy ()
-	{
-		int xDir = 0;
-		int yDir = 0;
+    this.skipMove = true;
+  }
 
-		if (Mathf.Abs (this.target.position.x - this.transform.position.x) < float.Epsilon) {
-			yDir = this.target.position.y > this.transform.position.y ? 1 : -1;
-		} else {
-			xDir = this.target.position.x > this.transform.position.x ? 1 : -1;
-		}
+  public void MoveEnemy()
+  {
+    int xDir = 0;
+    int yDir = 0;
 
-		this.AttemptMove<Player> (xDir, yDir);
-	}
+    if (Mathf.Abs(this.target.position.x - this.transform.position.x) <
+        float.Epsilon)
+    {
+      yDir = this.target.position.y > this.transform.position.y ? 1 : -1;
+    } else {
+      xDir = this.target.position.x > this.transform.position.x ? 1 : -1;
+    }
 
-	protected override void OnCantMove <T> (T component)
-	{
-		Player hitPlayer = component as Player;
-		this.animator.SetTrigger ("enemyAttack");
-		hitPlayer.LooseFood (this.playerDamage);
-		SoundManager.instance.RandomizeSfx (enemyAttack1, enemyAttack2);
-	}
+    this.AttemptMove<Player> (xDir, yDir);
+  }
+
+  protected override void OnCantMove <T> (T component)
+  {
+    Player hitPlayer = component as Player;
+
+    this.animator.SetTrigger("enemyAttack");
+    hitPlayer.LooseFood(this.playerDamage);
+    SoundManager.instance.RandomizeSfx(enemyAttack1, enemyAttack2);
+  }
 }

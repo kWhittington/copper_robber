@@ -3,19 +3,16 @@ using System.Collections;
 
 public abstract class MovingObject : MonoBehaviour
 {
-  public float moveTime = 0.1f;
   public LayerMask blockingLayer;
 
-  private BoxCollider2D boxCollider;
-  private Rigidbody2D rb2d;
-  private float inverseMoveTime;
-
-  // Use this for initialization
-  protected virtual void Start()
+  public BoxCollider2D BoxCollider
   {
-    boxCollider = GetComponent<BoxCollider2D> ();
-    rb2d = GetComponent<Rigidbody2D> ();
-    inverseMoveTime = 1f / moveTime;
+    get { return GetComponent<BoxCollider2D>(); }
+  }
+
+  public Rigidbody2D Rigidbody
+  {
+    get { return GetComponent<Rigidbody2D>(); }
   }
 
   protected bool Move(int xDir, int yDir, out RaycastHit2D hit)
@@ -23,13 +20,13 @@ public abstract class MovingObject : MonoBehaviour
     Vector2 start = transform.position;
     Vector2 end = start + new Vector2(xDir, yDir);
 
-    boxCollider.enabled = false;
+    BoxCollider.enabled = false;
     hit = Physics2D.Linecast(start, end, blockingLayer);
-    boxCollider.enabled = true;
+    BoxCollider.enabled = true;
 
     if (hit.transform == null)
     {
-      rb2d.MovePosition(end);
+      Rigidbody.MovePosition(end);
 
       return true;
     }

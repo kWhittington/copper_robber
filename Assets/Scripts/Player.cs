@@ -21,12 +21,11 @@ public class Player : MovingObject
   private int food;
 
   // Use this for initialization
-  protected override void Start()
+  protected void Start()
   {
     this.animator = GetComponent<Animator> ();
     this.food = GameManager.instance.playerFoodPoints;
     this.foodText.text = "Food: " + this.food;
-    base.Start();
   }
 
   private void OnDisable()
