@@ -92,12 +92,21 @@ public class Player : Movable
     }
   }
 
+  protected override void OnCollision()
+  {
+  }
+
   protected override void OnCollisionWith<T> (T component)
   {
     Wall hitWall = component as Wall;
 
     hitWall.DamageWall(this.wallDamage);
     this.animator.SetTrigger("playerChop");
+  }
+
+
+  protected override void OnNoCollision()
+  {
   }
 
   private void Restart()

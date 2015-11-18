@@ -47,6 +47,11 @@ public class Enemy : Movable
     this.AttemptMove<Player> (xDir, yDir);
   }
 
+  protected override void OnCollision()
+  {
+
+  }
+
   protected override void OnCollisionWith <T> (T component)
   {
     Player hitPlayer = component as Player;
@@ -54,5 +59,10 @@ public class Enemy : Movable
     this.animator.SetTrigger("enemyAttack");
     hitPlayer.LooseFood(this.playerDamage);
     SoundManager.instance.RandomizeSfx(enemyAttack1, enemyAttack2);
+  }
+
+  protected override void OnNoCollision()
+  {
+
   }
 }

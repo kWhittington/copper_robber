@@ -50,17 +50,16 @@ public class PlayerControlled : Movable
     return Input.GetKeyUp(KeyCode.DownArrow);
   }
 
-  protected override void AttemptMove<T> (int xDir, int yDir)
+  protected override void OnCollision()
   {
-    base.AttemptMove<T> (xDir, yDir);
-    Move(xDir, yDir);
-    if (!Collided)
-    {
-    }
   }
 
   protected override void OnCollisionWith<T> (T component)
   {
     Debug.Log("Cannot Move Robber");
+  }
+
+  protected override void OnNoCollision()
+  {
   }
 }

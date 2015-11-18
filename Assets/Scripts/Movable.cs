@@ -79,16 +79,21 @@ public abstract class Movable : MonoBehaviour
 
     if (!Collided)
     {
+      OnNoCollision();
+
       return;
-    }
+    } else {
+      T hitComponent = ProjectedCollision.transform.GetComponent<T> ();
+      OnCollision();
 
-    T hitComponent = ProjectedCollision.transform.GetComponent<T> ();
-
-    if (Collided && hitComponent != null)
-    {
-      OnCollisionWith(hitComponent);
+      if (Collided && hitComponent != null)
+      {
+        OnCollisionWith(hitComponent);
+      }
     }
   }
 
+  protected abstract void OnCollision();
   protected abstract void OnCollisionWith <T> (T component) where T : Component;
+  protected abstract void OnNoCollision();
 }
