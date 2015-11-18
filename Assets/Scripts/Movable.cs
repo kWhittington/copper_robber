@@ -6,8 +6,9 @@ public abstract class Movable : MonoBehaviour
   public LayerMask blockingLayer;
 
   private bool collided;
+  private RaycastHit2D collision;
   private RaycastHit2D projectedCollision;
-  private Vector2 currentDirection;
+  private Vector2 direction;
 
   public BoxCollider2D BoxCollider
   {
@@ -19,12 +20,12 @@ public abstract class Movable : MonoBehaviour
     get { return collided; }
   }
 
-  public Vector2 CurrentDirection
+  public Vector2 Direction
   {
-    get { return currentDirection; }
+    get { return direction; }
   }
 
-  public Vector2 CurrentPosition
+  public Vector2 Position
   {
     get { return transform.position; }
   }
@@ -40,7 +41,7 @@ public abstract class Movable : MonoBehaviour
 
   public Vector2 ProjectedPosition
   {
-    get { return CurrentPosition + CurrentDirection; }
+    get { return Position + Direction; }
   }
 
   public bool ProjectedToCollide
@@ -52,13 +53,13 @@ public abstract class Movable : MonoBehaviour
   {
     BoxCollider.enabled = false;
     projectedCollision = Physics2D.Linecast(
-      CurrentPosition, ProjectedPosition, blockingLayer);
+      Position, ProjectedPosition, blockingLayer);
     BoxCollider.enabled = true;
   }
 
   protected void Move(int xDirection, int yDirection)
   {
-    currentDirection = new Vector2(xDirection, yDirection);
+    direction = new Vector2(xDirection, yDirection);
     CalculateTrajectory();
 
     if (!ProjectedToCollide)
@@ -66,6 +67,7 @@ public abstract class Movable : MonoBehaviour
       Rigidbody.MovePosition(ProjectedPosition);
       collided = false;
     } else {
+      collision = ProjectedCollision;
       collided = true;
     }
   }
