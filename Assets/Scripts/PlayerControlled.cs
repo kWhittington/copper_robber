@@ -10,26 +10,6 @@ public class PlayerControlled : Movable
   {
   }
 
-  // Update is called once per frame
-  void Update()
-  {
-    UpdatePosition();
-  }
-
-  void UpdatePosition()
-  {
-    if (MoveLeftInputDetected())
-    {
-      AttemptMove<Wall>(-1, 0);
-    } else if (MoveRightInputDetected()) {
-      AttemptMove<Wall>(1, 0);
-    } else if (MoveUpInputDetected()) {
-      AttemptMove<Wall>(0, 1);
-    } else if (MoveDownInputDetected()) {
-      AttemptMove<Wall>(0, -1);
-    }
-  }
-
   public bool MoveLeftInputDetected()
   {
     return Input.GetKeyUp(KeyCode.LeftArrow);
@@ -61,5 +41,25 @@ public class PlayerControlled : Movable
 
   protected override void OnNoCollision()
   {
+  }
+
+  // Update is called once per frame
+  void Update()
+  {
+    UpdatePosition();
+  }
+
+  void UpdatePosition()
+  {
+    if (MoveLeftInputDetected())
+    {
+      AttemptMove<Wall>(-1, 0);
+    } else if (MoveRightInputDetected()) {
+      AttemptMove<Wall>(1, 0);
+    } else if (MoveUpInputDetected()) {
+      AttemptMove<Wall>(0, 1);
+    } else if (MoveDownInputDetected()) {
+      AttemptMove<Wall>(0, -1);
+    }
   }
 }
