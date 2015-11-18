@@ -64,7 +64,7 @@ public class Player : Movable
     this.foodText.text = "Food: " + this.food;
     base.AttemptMove<T> (xDir, yDir);
     RaycastHit2D hit;
-    if (Move(xDir, yDir, out hit))
+    if (Move(xDir, yDir))
     {
       SoundManager.instance.RandomizeSfx(moveSound1, moveSound2);
     }
