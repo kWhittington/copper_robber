@@ -36,7 +36,9 @@ public class PlayerControlled : Movable
 
   protected override void OnCollisionWith<T> (T component)
   {
-    Debug.Log("Cannot Move Robber");
+    Pushable pushable = component as Pushable;
+
+    pushable.Push(Direction);
   }
 
   protected override void OnNoCollision()
@@ -53,13 +55,13 @@ public class PlayerControlled : Movable
   {
     if (MoveLeftInputDetected())
     {
-      AttemptMove<Wall>(-1, 0);
+      AttemptMove<Pushable>(-1, 0);
     } else if (MoveRightInputDetected()) {
-      AttemptMove<Wall>(1, 0);
+      AttemptMove<Pushable>(1, 0);
     } else if (MoveUpInputDetected()) {
-      AttemptMove<Wall>(0, 1);
+      AttemptMove<Pushable>(0, 1);
     } else if (MoveDownInputDetected()) {
-      AttemptMove<Wall>(0, -1);
+      AttemptMove<Pushable>(0, -1);
     }
   }
 }
