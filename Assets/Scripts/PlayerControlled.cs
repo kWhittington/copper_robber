@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 using System.Collections;
 
-public class Robber : MovingObject
+public class PlayerControlled : MovingObject
 {
 
   // Use this for initialization
