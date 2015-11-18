@@ -58,7 +58,6 @@ public abstract class Movable : MonoBehaviour
     {
       OnNoCollision();
 
-      return;
     } else {
       T hitComponent = ProjectedCollision.transform.GetComponent<T> ();
       OnCollision();
