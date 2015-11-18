@@ -78,8 +78,6 @@ public class GameManager : MonoBehaviour
     {
       return;
     }
-
-    StartCoroutine(MoveEnemies());
   }
 
   public void AddEnemyToList(Enemy script)
@@ -87,22 +85,4 @@ public class GameManager : MonoBehaviour
     this.enemies.Add(script);
   }
 
-  IEnumerator MoveEnemies()
-  {
-    this.enemiesMoving = true;
-    yield return new WaitForSeconds(this.turnDelay);
-    if (enemies.Count == 0)
-    {
-      yield return new WaitForSeconds(turnDelay);
-    }
-
-    for (int i = 0; i < this.enemies.Count; i++)
-    {
-      this.enemies [i].MoveEnemy();
-      yield return new WaitForSeconds(enemies [i].moveTime);
-    }
-
-    this.playersTurn = true;
-    this.enemiesMoving = false;
-  }
 }
