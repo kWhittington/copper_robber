@@ -49,6 +49,27 @@ public abstract class Movable : MonoBehaviour
     get { return ProjectedCollision.transform != null; }
   }
 
+  protected virtual void AttemptMove <T> (int xDir,
+                                          int yDir) where T : Component
+  {
+    Move(xDir, yDir);
+
+    if (!Collided)
+    {
+      OnNoCollision();
+
+      return;
+    } else {
+      T hitComponent = ProjectedCollision.transform.GetComponent<T> ();
+      OnCollision();
+
+      if (Collided && hitComponent != null)
+      {
+        OnCollisionWith(hitComponent);
+      }
+    }
+  }
+
   public void CalculateTrajectory()
   {
     BoxCollider.enabled = false;
@@ -69,27 +90,6 @@ public abstract class Movable : MonoBehaviour
     } else {
       collision = ProjectedCollision;
       collided = true;
-    }
-  }
-
-  protected virtual void AttemptMove <T> (int xDir,
-                                          int yDir) where T : Component
-  {
-    Move(xDir, yDir);
-
-    if (!Collided)
-    {
-      OnNoCollision();
-
-      return;
-    } else {
-      T hitComponent = ProjectedCollision.transform.GetComponent<T> ();
-      OnCollision();
-
-      if (Collided && hitComponent != null)
-      {
-        OnCollisionWith(hitComponent);
-      }
     }
   }
 
