@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public abstract class MovingObject : MonoBehaviour
+public abstract class Movable : MonoBehaviour
 {
   public LayerMask blockingLayer;
 
@@ -24,7 +24,7 @@ public abstract class MovingObject : MonoBehaviour
     hit = Physics2D.Linecast(start, end, blockingLayer);
     BoxCollider.enabled = true;
 
-    if (hit.transform == null)
+    if (hit.collider == null)
     {
       Rigidbody.MovePosition(end);
 

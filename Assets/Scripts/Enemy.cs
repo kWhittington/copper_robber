@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Enemy : MovingObject
+public class Enemy : Movable
 {
   public int playerDamage;
   private Animator animator;

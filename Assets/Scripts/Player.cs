@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class Player : MovingObject
+public class Player : Movable
 {
   public int wallDamage = 1;
   public int pointsPerFood = 10;

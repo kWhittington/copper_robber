@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 using System.Collections;
 
-public class PlayerControlled : MovingObject
+public class PlayerControlled : Movable
 {
 
   // Use this for initialization
