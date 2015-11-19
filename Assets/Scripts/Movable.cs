@@ -96,6 +96,26 @@ public abstract class Movable : MonoBehaviour
     }
   }
 
+  public bool MovingLeft()
+  {
+    return Direction == Vector2.left;
+  }
+
+  public bool MovingRight()
+  {
+    return Direction == Vector2.right;
+  }
+
+  public bool MovingDown()
+  {
+    return Direction == Vector2.down;
+  }
+
+  public bool MovingUp()
+  {
+    return Direction == Vector2.up;
+  }
+
   protected abstract void OnCollision();
   protected abstract void OnCollisionWith <T> (T component) where T : Component;
   protected abstract void OnNoCollision();

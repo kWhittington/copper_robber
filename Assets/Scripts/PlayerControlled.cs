@@ -10,9 +10,19 @@ public class PlayerControlled : Movable
   {
   }
 
+  public void MoveLeft()
+  {
+    AttemptMove<Pushable>(-1, 0);
+  }
+
   public bool MoveLeftInputDetected()
   {
     return Input.GetKeyUp(KeyCode.LeftArrow);
+  }
+
+  public void MoveRight()
+  {
+    AttemptMove<Pushable>(1, 0);
   }
 
   public bool MoveRightInputDetected()
@@ -20,9 +30,19 @@ public class PlayerControlled : Movable
     return Input.GetKeyUp(KeyCode.RightArrow);
   }
 
+  public void MoveUp()
+  {
+    AttemptMove<Pushable>(0, 1);
+  }
+
   public bool MoveUpInputDetected()
   {
     return Input.GetKeyUp(KeyCode.UpArrow);
+  }
+
+  public void MoveDown()
+  {
+    AttemptMove<Pushable>(0, -1);
   }
 
   public bool MoveDownInputDetected()
@@ -55,13 +75,13 @@ public class PlayerControlled : Movable
   {
     if (MoveLeftInputDetected())
     {
-      AttemptMove<Pushable>(-1, 0);
+      MoveLeft();
     } else if (MoveRightInputDetected()) {
-      AttemptMove<Pushable>(1, 0);
+      MoveRight();
     } else if (MoveUpInputDetected()) {
-      AttemptMove<Pushable>(0, 1);
+      MoveUp();
     } else if (MoveDownInputDetected()) {
-      AttemptMove<Pushable>(0, -1);
+      MoveDown();
     }
   }
 }
