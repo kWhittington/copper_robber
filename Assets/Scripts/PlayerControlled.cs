@@ -4,6 +4,10 @@ using System.Collections;
 
 public class PlayerControlled : Movable
 {
+  public SpriteRenderer Renderer
+  {
+    get { return GetComponent<SpriteRenderer>(); }
+  }
 
   // Use this for initialization
   protected void Start()
