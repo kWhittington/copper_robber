@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 
 [ExecuteInEditMode]
-public class Gridable : MonoBehaviour {
+public class Griddable : MonoBehaviour {
   public float cell_size = 1f;
 
   public Vector3 Position
