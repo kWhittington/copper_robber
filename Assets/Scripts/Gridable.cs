@@ -5,29 +5,30 @@ using System;
 public class Gridable : MonoBehaviour {
   public float cell_size = 1f;
 
-  public Vector3 GridPosition()
+  public Vector3 Position
   {
-    return new Vector3(GridX(), GridY(), GridZ());
+    get { return new Vector3(X, Y, Z); }
   }
 
-  public float GridX()
+  public float X
   {
-    return Mathf.Round(transform.position.x / cell_size) * cell_size;
+    get { return Mathf.Round(transform.position.x / cell_size) * cell_size; }
   }
 
-  public float GridY()
+  public float Y
   {
-    return Mathf.Round(transform.position.y / cell_size) * cell_size;
+    get { return Mathf.Round(transform.position.y / cell_size) * cell_size; }
   }
 
-  public float GridZ()
+  public float Z
   {
-    return transform.position.z;
+    get { return transform.position.z; }
   }
+
 
   public void SnapToGrid()
   {
-    transform.position = GridPosition();
+    transform.position = Position;
   }
 
   void Update()
