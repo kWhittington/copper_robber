@@ -6,8 +6,12 @@ namespace CopperRobber
   public class Game : MonoBehaviour
   {
     public static Game instance = null;
+    public Levels levels;
 
-    private Levels levels;
+    public static bool Started()
+    {
+      return instance != null;
+    }
 
     public string CurrentLevelName
     {
@@ -21,7 +25,7 @@ namespace CopperRobber
 
     public string LoadedLevelName
     {
-      get { return Application.LoadedLevelName; }
+      get { return Application.loadedLevelName; }
     }
 
     public string NextLevelName
@@ -42,7 +46,7 @@ namespace CopperRobber
 
     void InitGame()
     {
-      levels = GetComponent<CopperRobber.Levels>();
+      levels = GetComponent<Levels>();
     }
 
     void InitStaticReference()
