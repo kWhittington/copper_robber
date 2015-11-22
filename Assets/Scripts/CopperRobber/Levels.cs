@@ -57,6 +57,16 @@ namespace CopperRobber
       currentLevelIndex = 0;
     }
 
+    public bool RestartInputDetected()
+    {
+      return Input.GetKeyUp(KeyCode.Escape);
+    }
+
+    public void RestartCurrentLevel()
+    {
+      Game.instance.LoadLevel(CurrentLevelName);
+    }
+
     public override string ToString()
     {
       string result = "< Levels: ";
@@ -69,6 +79,19 @@ namespace CopperRobber
       result += ">";
 
       return result;
+    }
+
+    void Update()
+    {
+      if (RestartInputDetected())
+      {
+        if (OnLastLevel())
+        {
+          Game.instance.StartLevels();
+        } else {
+          RestartCurrentLevel();
+        }
+      }
     }
   }
 }

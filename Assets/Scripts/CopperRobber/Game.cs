@@ -126,12 +126,16 @@ namespace CopperRobber
 
     public void StartLevels()
     {
+      levels.enabled = true;
+      tutorial.enabled = false;
       levels.Reset();
       LoadLevel(levels.CurrentLevelName);
     }
 
     public void StartTutorial()
     {
+      levels.enabled = false;
+      tutorial.enabled = true;
       tutorial.Reset();
       LoadLevel(tutorial.CurrentTutorialName);
     }
