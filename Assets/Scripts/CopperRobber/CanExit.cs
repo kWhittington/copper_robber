@@ -21,7 +21,6 @@ namespace CopperRobber
 
     void ExitLevel()
     {
-      Game.instance.IncreaseScoreBy(scorePoints);
       Game.instance.AdvanceLevel();
     }
   }
