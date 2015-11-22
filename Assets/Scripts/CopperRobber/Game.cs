@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 namespace CopperRobber
@@ -6,7 +7,18 @@ namespace CopperRobber
   public class Game : MonoBehaviour
   {
     public static Game instance = null;
+    public Text scoreText;
     public Levels levels;
+    public Tutorial tutorial;
+
+    private Text levelText;
+    private GameObject levelImage;
+    private int score;
+
+    public static void AdvanceInstanceLevel()
+    {
+      instance.AdvanceLevel();
+    }
 
     public static bool Started()
     {
@@ -44,9 +56,44 @@ namespace CopperRobber
       InitGame();
     }
 
+    public void AdvanceLevel()
+    {
+      if (!OnLastLevel())
+      {
+        LoadLevel(NextLevelName);
+        levels.AdvanceLevel();
+      }
+    }
+
+    public void ContinueTutorial()
+    {
+      if (OnLastScreen())
+      {
+        EndTutorial();
+      } else {
+        LoadLevel(tutorial.NextTutorialName);
+        tutorial.AdvanceTutorial();
+      }
+    }
+
+    public void EndTutorial()
+    {
+      tutorial.enabled = false;
+      StartLevels();
+    }
+
+    public void IncreaseScoreBy(int amount)
+    {
+      score += amount;
+    }
+
     void InitGame()
     {
+      Debug.Log("Init Game");
       levels = GetComponent<Levels>();
+      tutorial = GetComponent<Tutorial>();
+      Debug.Log("Levels: " + levels.ToString());
+      score = 0;
     }
 
     void InitStaticReference()
@@ -60,14 +107,6 @@ namespace CopperRobber
       DontDestroyOnLoad(gameObject);
     }
 
-    public void AdvanceLevel()
-    {
-      if (!OnLastLevel())
-      {
-        LoadLevel(NextLevelName);
-      }
-    }
-
     public void LoadLevel(string levelName)
     {
       Application.LoadLevel(levelName);
@@ -76,6 +115,17 @@ namespace CopperRobber
     public bool OnLastLevel()
     {
       return levels.OnLastLevel();
+    }
+
+    public bool OnLastScreen()
+    {
+      return tutorial.OnLastScreen();
+    }
+
+    public void StartLevels()
+    {
+      levels.Reset();
+      LoadLevel(levels.CurrentLevelName);
     }
   }
 }

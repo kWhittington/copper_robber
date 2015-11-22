@@ -9,10 +9,10 @@ namespace CopperRobber
 
     void Awake()
     {
-      // if (!Game.Started())
-      // {
-      Instantiate(game);
-      // }
+      if (Game.instance == null)
+      {
+        Instantiate(game);
+      }
     }
   }
 }

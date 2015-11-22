@@ -3,7 +3,8 @@ using System.Collections;
 
 namespace CopperRobber
 {
-  public class Levels : MonoBehaviour {
+  public class Levels : MonoBehaviour
+  {
     public string[] levelProgression;
 
     private int currentLevelIndex;
@@ -54,6 +55,20 @@ namespace CopperRobber
     public void Reset()
     {
       currentLevelIndex = 0;
+    }
+
+    public override string ToString()
+    {
+      string result = "< Levels: ";
+
+      foreach (string levelName in levelProgression)
+      {
+        result += levelName + ", ";
+      }
+
+      result += ">";
+
+      return result;
     }
   }
 }
