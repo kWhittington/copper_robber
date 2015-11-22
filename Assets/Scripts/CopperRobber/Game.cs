@@ -7,12 +7,9 @@ namespace CopperRobber
   public class Game : MonoBehaviour
   {
     public static Game instance = null;
-    public Text scoreText;
     public Levels levels;
     public Tutorial tutorial;
 
-    private Text levelText;
-    private GameObject levelImage;
     private int score;
 
     public static void AdvanceInstanceLevel()
@@ -69,8 +66,11 @@ namespace CopperRobber
     {
       if (OnLastScreen())
       {
+        Debug.Log("On Last Screen");
         EndTutorial();
       } else {
+        Debug.Log("Not On Last Screen");
+        Debug.Log("Next Tutorial: " + tutorial.NextTutorialName);
         LoadLevel(tutorial.NextTutorialName);
         tutorial.AdvanceTutorial();
       }
@@ -94,6 +94,8 @@ namespace CopperRobber
       tutorial = GetComponent<Tutorial>();
       Debug.Log("Levels: " + levels.ToString());
       score = 0;
+
+      StartTutorial();
     }
 
     void InitStaticReference()
@@ -126,6 +128,12 @@ namespace CopperRobber
     {
       levels.Reset();
       LoadLevel(levels.CurrentLevelName);
+    }
+
+    public void StartTutorial()
+    {
+      tutorial.Reset();
+      LoadLevel(tutorial.CurrentTutorialName);
     }
   }
 }
