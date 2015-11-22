@@ -59,7 +59,7 @@ namespace CopperRobber
 
     public bool RestartInputDetected()
     {
-      return Input.GetKeyUp(KeyCode.Escape);
+      return Input.GetKeyUp(KeyCode.R);
     }
 
     public void RestartCurrentLevel()
