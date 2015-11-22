@@ -13,9 +13,9 @@ The player must push furniture out of the way to reach the piece of copper on ea
 
 Once the player reaches the piece of copper on a level, they are transported to the next level.
 
-The player can reset a level if they get stuck with the escape key.
+The player can reset a level if they get stuck with the 'R' key.
 
-If the player completes the last level, they can reset all levels with the reset key (escape).
+If the player completes the last level, they can reset all levels with the reset key (R).
 
 ## Outside Tools
 The Unity3D engine and Scavengers tutorial were used as a base for building this game. Much of the original code has been removed or reworked into something completely new though. All art assets are original and made using Pixen.
