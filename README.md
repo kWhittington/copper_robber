@@ -4,7 +4,7 @@ by Kyle Whittington
 "Copper Robber", is a puzzle game built with the Unity3D (2D) engine.
 
 ## Installation/Play
-To run the game locally, use whatever preferred server software to host this directory. To run the game locally, open the project in Unity3D. Open the "StartScreen" scene (Assets/Scenes/CopperRobber/StartScreen.unity). Press the Unity3D "Play" button.
+To run the game locally, open the project in Unity3D. Open the "StartScreen" scene (Assets/Scenes/CopperRobber/StartScreen.unity). Press the Unity3D "Play" button.
 
 To play the game in your browser, visit [http://kwhittington.github.io/copper_robber/](http://kwhittington.github.io/copper_robber/).
 
